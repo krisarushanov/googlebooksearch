@@ -1,7 +1,7 @@
 const express = require("express");
 
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const routes = require("./routes/server");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -16,7 +16,14 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+const MONGODB_URI = "mongodb+srv://krisarushanov:Myboris123@cluster0.ukijq.mongodb.net/BooksretryWrites=true&w=majority"
+mongoose.connect(MONGODB_URI || "mongodb://localhost/sleepy-tor-37162", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}).then(() => console.log("Database Connected!"))
+  .catch(err => console.log(err));
 
 // Start the API server
 app.listen(PORT, function() {

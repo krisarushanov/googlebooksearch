@@ -1,5 +1,4 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes/server");
 const app = express();
@@ -17,7 +16,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 const MONGODB_URI = "mongodb+srv://krisarushanov:Myboris123@cluster0.ukijq.mongodb.net/BooksretryWrites=true&w=majority"
-mongoose.connect(MONGODB_URI || "mongodb://localhost/sleepy-tor-37162", {
+mongoose.connect(MONGODB_URI || "mongodb://localhost/reactreadinglist", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
